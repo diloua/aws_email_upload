@@ -41,7 +41,7 @@ The main function running the app
 cd util/lambda_functions
 ```
 
-#uploadNotifyFile:
+### uploadNotifyFile:
 Decodes the incoming binary file data from the request body into a byte string.
 Reads the bucket name, file key, and email address from the request.
 Verifies that the email address is a verified email address on Amazon Simple Email Service (SES).
@@ -50,7 +50,7 @@ Uploads the file to the S3 bucket if it does not exist.
 Checks if the file was uploaded successfully to the S3 bucket.
 Sends an email notification to the provided email address indicating that a file was uploaded to the S3 bucket. The email includes the bucket name, file key, and the time the file was uploaded.
 
-#verifyAddress:
+### verifyAddress:
 Connects to the Amazon SES (Simple Email Service) service.
 Gets the email address to add to verified emails.
 Checks if the email has been verified using ses.list_verified_email_addresses().
