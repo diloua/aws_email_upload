@@ -1,6 +1,7 @@
 import boto3
 import json
 import base64
+import datetime
 
 s3 = boto3.client("s3")
 ses = boto3.client("ses")
@@ -38,6 +39,8 @@ def lambda_handler(event, context):
                 'statusCode': 500,
                 'message': json.dumps(f'File upload to S3 bucket failed: {e}')
             }
+            
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # Check if file was uploaded successfully
     try:
@@ -50,7 +53,7 @@ def lambda_handler(event, context):
         }
 
     # Send email notification
-    email_body = f"A file has been uploaded to the following S3 bucket: {bucket} with the key: {key}"
+    email_body = f"A file has been uploaded to the following S3 bucket: {bucket} with the name: {key}, at {current_time}"
     ses.send_email(
         Destination={
             'ToAddresses': [email]
@@ -72,4 +75,3 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "message": json.dumps("File uploaded and email sent successfully")
     }
-
