@@ -32,15 +32,14 @@ The verify_email function takes in an email address as an argument and calls the
 
 The upload_file function takes in a file as argument and calls the lambda function that uploads the file on AWS.
 
+### app.py
+
+The main function running the app
+
 ## Lambda functions:
 ```
 cd util/lambda_functions
 ```
-
-
-### app.py
-
-The main function running the app
 
 ## Running the tests
 
